@@ -32,6 +32,37 @@ void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial
 
     Timer* timer = criar_timer();
 
-    
+    for (int i = nInicial; i<=nFinal; i+=passo) {
+
+        double tempoTotal = 0.0;
+
+        for (int j=0; j<repeticoes; j++) {
+
+            int* array = gerar_array_aleatorio(i);
+            
+            if (!array) continue;
+
+            iniciar_timer(timer);
+            algoritmo(array, i);
+            parar_timer(timer);
+
+            tempoTotal += tempo_timer_milisegundos(timer);
+
+            free(array);
+
+        }
+
+        double tempoMedio = tempoTotal / repeticoes;
+        
+        printf("N = %-7d | Tempo Medio = %.6f ms\n", i, tempoMedio);
+
+        fprintf(arquivo, "%d,%.6f\n", i, tempoMedio);
+
+    }
+
+    fclose(arquivo);
+    limpar_timer(timer);
+
+    printf("Analise de %s concluida. Resultados salvos em %s\n\n", nomeAlgoritmo, nomeArquivo);
 
 }
