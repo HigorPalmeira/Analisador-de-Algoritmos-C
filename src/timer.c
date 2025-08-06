@@ -20,3 +20,16 @@
     };
 
 #endif
+
+
+Timer* criar_timer() {
+
+    Timer* timer = (Timer*) malloc(sizeof(Timer));
+
+    #if defined(_WIN32)
+        QueryPerformanceFrequency(&timer->frequencia);
+    #endif
+
+    return timer;
+
+}
