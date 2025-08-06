@@ -1,0 +1,13 @@
+#ifndef TIMER_H
+    #define TIMER_H
+
+    typedef struct Timer Timer;
+
+    Timer* criar_timer();
+
+    void iniciar_timer(Timer* timer);
+
+    void parar_timer(Timer* timer);
+
+    double tempo_timer_segundos(Timer* timer);
+#endif
