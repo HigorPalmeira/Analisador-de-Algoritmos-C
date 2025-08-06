@@ -1,3 +1,5 @@
+# Makefile para linux
+
 CC=gcc
 CFLAGS=-Wall -Wextra -g -O2
 LDFLAGS=-lm
