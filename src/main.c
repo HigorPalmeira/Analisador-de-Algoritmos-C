@@ -5,9 +5,10 @@
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
 
+typedef void (*FuncaoAlgoritmo)(int*, int);
 
 int main() {
 
     return 0;
-    
+
 }
