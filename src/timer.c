@@ -78,3 +78,10 @@ double tempo_timer_segundos(Timer* timer) {
     #endif
 
 }
+
+
+double tempo_timer_milisegundos(Timer* timer) {
+
+    return tempo_timer_segundos(timer) * 1000.0;
+
+}
