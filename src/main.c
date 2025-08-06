@@ -12,3 +12,10 @@ int main() {
     return 0;
 
 }
+
+
+void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes) {
+
+    
+
+}
