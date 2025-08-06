@@ -21,4 +21,13 @@ void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial
     char nomeArquivo[256];
     sprintf(nomeArquivo, "resultados/%s.csv", nomeAlgoritmo);
 
+    FILE* arquivo = fopen(nomeArquivo, "w");
+    
+    if (!arquivo) {
+        perror("Nao foi possivel criar o arquivo de resultados.");
+        return;
+    }
+
+    fprintf(arquivo, "N, TempoMedio_ms\n");
+
 }
