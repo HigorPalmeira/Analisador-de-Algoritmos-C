@@ -48,3 +48,18 @@ void iniciar_timer(Timer* timer) {
     #endif
 
 }
+
+
+void parar_timer(Timer* timer) {
+
+    #if defined(_WIN32)
+
+        QueryPerformanceCounter(&timer->fim);
+
+    #elif defined(__linux__) || defined(__APPLE__)
+
+        clock_gettime(CLOCK_MONOTONIC, &timer->fim);
+
+    #endif
+
+}
