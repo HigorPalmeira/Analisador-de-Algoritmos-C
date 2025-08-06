@@ -16,6 +16,9 @@ int main() {
 
 void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes) {
 
-    
+    printf("Analisando o algoritmo: %s\n", nomeAlgoritmo);
+
+    char nomeArquivo[256];
+    sprintf(nomeArquivo, "resultados/%s.csv", nomeAlgoritmo);
 
 }
