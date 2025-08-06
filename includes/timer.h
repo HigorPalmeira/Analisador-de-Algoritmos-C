@@ -13,6 +13,6 @@
 
     double tempo_timer_milisegundos(Timer* timer);
 
-    void limpar_timer(Timer* t);
+    void limpar_timer(Timer* timer);
 
 #endif

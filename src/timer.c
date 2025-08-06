@@ -85,3 +85,9 @@ double tempo_timer_milisegundos(Timer* timer) {
     return tempo_timer_segundos(timer) * 1000.0;
 
 }
+
+void limpar_timer(Timer* timer) {
+
+    free(timer);
+
+}
