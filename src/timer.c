@@ -63,3 +63,18 @@ void parar_timer(Timer* timer) {
     #endif
 
 }
+
+
+double tempo_timer_segundos(Timer* timer) {
+
+    #if defined(_WIN32)
+
+        return (double) (timer->fim.QuadPart - timer->inicio.QuadPart) / timer->frequencia.QuadPart;
+
+    #elif defined(__linux__) || defined(__APPLE__)
+
+        return (timer->fim.tv_sec - timer->inicio.tv_sec) + (t->fim.tv_nsec - timer->inicio.tvnsec) / 1e9;
+
+    #endif
+
+}
