@@ -7,7 +7,11 @@
 
 typedef void (*FuncaoAlgoritmo)(int*, int);
 
+void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
+
 int main() {
+
+    analisar("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
 
     return 0;
 
