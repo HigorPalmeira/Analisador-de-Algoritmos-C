@@ -30,4 +30,8 @@ void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial
 
     fprintf(arquivo, "N, TempoMedio_ms\n");
 
+    Timer* timer = criar_timer();
+
+    
+
 }
