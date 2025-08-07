@@ -2,7 +2,7 @@
 
     #define BUSCA_H
 
-    void busca_linear(const int array[], int n);
+    void busca_linear(int array[], int n);
 
     int gerar_valor_aleatorio();
 
