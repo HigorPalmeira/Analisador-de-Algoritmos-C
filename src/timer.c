@@ -41,7 +41,11 @@ Timer* criar_timer() {
 
 }
 
+/*
+    Inicializa um timer com o tempo do computador.
 
+    @param timer Timer que será incializado.
+*/
 void iniciar_timer(Timer* timer) {
 
     #if defined(_WIN32)
