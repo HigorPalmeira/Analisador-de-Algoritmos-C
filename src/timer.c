@@ -42,7 +42,7 @@ Timer* criar_timer() {
 }
 
 /*
-    Inicializa um timer com o tempo do computador.
+    Inicializa um timer, marcando o tempo do computador no campo inicio.
 
     @param timer Timer que será incializado.
 */
@@ -60,7 +60,11 @@ void iniciar_timer(Timer* timer) {
 
 }
 
+/*
+    Para um timer, marcando o tempo do computador no campo fim.
 
+    @param timer Timer que será parado.
+*/
 void parar_timer(Timer* timer) {
 
     #if defined(_WIN32)
@@ -75,7 +79,12 @@ void parar_timer(Timer* timer) {
 
 }
 
+/*
+    Calcula o tempo decorrio no timer em segundos.
 
+    @param timer Timer onde está os dados de inicio e fim.
+    @return Tempo decorrido em segundos.
+*/
 double tempo_timer_segundos(Timer* timer) {
 
     #if defined(_WIN32)
