@@ -21,6 +21,30 @@ void insertion_sort(int array[], int n) {
 
 }
 
+void bubble_sort(int arr[], int n) {
+
+    for (int i = 0; i < n - 1; i++) {
+        
+        int trocou = 0; 
+        
+        for (int j = 0; j < n - i - 1; j++) {
+        
+            if (arr[j] > arr[j + 1]) {
+        
+                trocar(&arr[j], &arr[j + 1]);
+                trocou = 1;
+        
+            }
+        
+        }
+        
+        if (trocou == 0) {
+            break;
+        }
+    }
+
+}
+
 /* 
     Gera um array com valores aleatórios, com tamanho de n entradas.
 
