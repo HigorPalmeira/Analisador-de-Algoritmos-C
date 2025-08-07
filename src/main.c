@@ -4,6 +4,7 @@
 
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
+#include "../includes/busca.h"
 
 /*
     Tipagem de uma função com dois parâmetros e retorno do tipo void.
@@ -22,6 +23,8 @@ int main() {
     analisar("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
     
     analisar("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
+
+    analisar("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
     
     return 0;
 
