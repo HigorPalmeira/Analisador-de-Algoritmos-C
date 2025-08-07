@@ -19,6 +19,8 @@ int main() {
 
     analisar("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
 
+    analisar("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
+
     return 0;
 
 }
