@@ -6,4 +6,6 @@
 
     void encontrar_minimo(int array[], int n);
 
+    void calcular_soma(int array[], int n);
+
 #endif
