@@ -2,6 +2,9 @@
 
 #include "../includes/timer.h"
 
+/*
+    Declaração do struct Timer para cada sistema operacional.
+*/
 #if defined(_WIN32)
     #include <windows.h>
     
@@ -21,7 +24,11 @@
 
 #endif
 
+/*
+    Cria um timer para contar o tempo decorrido no computador.
 
+    @return Um ponteiro para um novo Timer.
+*/
 Timer* criar_timer() {
 
     Timer* timer = (Timer*) malloc(sizeof(Timer));
