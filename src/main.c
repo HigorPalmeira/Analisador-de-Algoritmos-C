@@ -5,6 +5,7 @@
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
 #include "../includes/busca.h"
+#include "../includes/estatistico.h"
 
 /*
     Tipagem de uma função com dois parâmetros e retorno do tipo void.
@@ -27,6 +28,8 @@ int main() {
     analisar("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
 
     analisar("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
+
+    analisar("EncontrarMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
     
     return 0;
 
