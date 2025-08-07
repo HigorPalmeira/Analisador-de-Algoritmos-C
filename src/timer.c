@@ -99,7 +99,12 @@ double tempo_timer_segundos(Timer* timer) {
 
 }
 
+/*
+    Calcula o tempo decorrido no timer em milisegundos.
 
+    @param timer Timer onde está os dados de inicio e fim.
+    @return Tempo decorrido em milisegundos.
+*/
 double tempo_timer_milisegundos(Timer* timer) {
 
     return tempo_timer_segundos(timer) * 1000.0;
