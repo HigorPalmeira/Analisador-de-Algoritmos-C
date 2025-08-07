@@ -5,6 +5,9 @@
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
 
+/*
+    Tipagem de uma função com dois parâmetros e retorno do tipo void.
+ */
 typedef void (*FuncaoAlgoritmo)(int*, int);
 
 void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
@@ -17,7 +20,16 @@ int main() {
 
 }
 
+/*
+    Analisa um algoritmo medindo o seu tempo médio de execução e escrevendo o resultado em um arquivo CSV na pasta de resultados, com o nome do algoritmo.
 
+    @param nomeAlgoritmo Cadeia de caracteres contendo o nome do algoritmo que será analisado.
+    @param algoritmo Ponteiro para uma função do tipo void que recebe dois argumentos inteiros (array e um inteiro), que será executada e medida.
+    @param nInicial Número do limite inferior da medição.
+    @param nFinal Número do limite superior da medição.
+    @param passo Número do passo utilizado na medição.
+    @param repeticoes Quantidade de vezes que o algoritmo será executado.
+*/
 void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes) {
 
     printf("Analisando o algoritmo: %s\n", nomeAlgoritmo);
