@@ -25,6 +25,8 @@ int main() {
     analisar("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
 
     analisar("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
+
+    analisar("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
     
     return 0;
 
