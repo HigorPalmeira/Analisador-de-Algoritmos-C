@@ -1,7 +1,7 @@
 
 mkdir ./target
 
-gcc -o analisador ./src/*.c
+gcc -o ./target/analisador ./src/*.c ./algoritmos/*.c
 
 ./target/analisador
 
