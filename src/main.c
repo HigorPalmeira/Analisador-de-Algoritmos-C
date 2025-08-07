@@ -7,6 +7,9 @@
 
 /*
     Tipagem de uma função com dois parâmetros e retorno do tipo void.
+
+    @param int* Array de valores inteiros.
+    @param int Valor inteiro
  */
 typedef void (*FuncaoAlgoritmo)(int*, int);
 
