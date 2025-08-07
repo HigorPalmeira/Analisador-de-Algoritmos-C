@@ -2,6 +2,9 @@
 
 #include "../includes/ordenacao.h"
 
+/*
+    Algoritmo de ordenação Insertion Sort, utilizado como exemplo para medir seu tempo de execução.
+*/
 void insertion_sort(int array[], int n) {
 
     for (int i=1; i<n; i++) {
@@ -18,6 +21,12 @@ void insertion_sort(int array[], int n) {
 
 }
 
+/* 
+    Gera um array com valores aleatórios, com tamanho de n entradas.
+
+    @param n Tamanho do vetor.
+    @return array com tamanho de n.
+*/
 int* gerar_array_aleatorio(int n) {
     
     int* array = (int*) malloc(sizeof(int) * n);
