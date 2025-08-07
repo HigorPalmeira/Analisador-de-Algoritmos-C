@@ -30,6 +30,12 @@ int main() {
     analisar("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
 
     analisar("EncontrarMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
+
+    analisar("EncontrarMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
+
+    analisar("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
+
+    analisar("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
     
     return 0;
 
