@@ -45,3 +45,12 @@ void calcular_soma(int array[], int n) {
     }
 
 }
+
+
+void calcular_media(int array[], int n) {
+
+    if (n <= 0) return;
+
+    calcular_soma(array, n);// /n;
+
+}
