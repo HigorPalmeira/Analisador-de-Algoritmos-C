@@ -111,6 +111,11 @@ double tempo_timer_milisegundos(Timer* timer) {
 
 }
 
+/*
+    Libera a memória alocada do timer.
+
+    @param timer Endereço de memória onde o timer está alocado.
+*/
 void limpar_timer(Timer* timer) {
 
     free(timer);
