@@ -25,3 +25,7 @@ Ele vai criar um arquivo executável com o nome `analisador.exe`, agora execute 
 ```
 
 ## Algoritmos de Teste
+
+Os algoritmos analisados, estão incluídos na pasta `./algoritmos`, e cada algoritmo incluído  possui um arquivo `header` na pasta `./includes`. É necessário incluir os headers no arquivo principal, e chamar a função `analisar`, passando seus parâmetros.
+
+**Obs.:** Os algoritmos devem estar no formato `void algoritmo(int* vetor, int tamanho)`.
