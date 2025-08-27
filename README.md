@@ -2,6 +2,10 @@
 
 O Analisador faz a contagem do tempo médio (ms) da execução dos algoritmos.
 
+## Visão Geral
+
+O Analisador de Algoritmos foi elaborado na linguagem C e, faz a análise do tempo médio de execução de algoritmos e salva o resultado em um arquivo com extensão `.csv`, na pasta `resultados`. 
+
 ## Executar o Algoritmo
 
 Pode executar utilizando o `Makefile`, na raiz do projeto execute o comando:
