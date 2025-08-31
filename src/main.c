@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../includes/analisador.h"
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
 #include "../includes/busca.h"
@@ -15,27 +16,45 @@
  */
 typedef void (*FuncaoAlgoritmo)(int*, int);
 
-void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
+void analisar_tempo(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
+char* ler_arquivo(const char* filename);
 
-int main() {
+int main(int argc, char* argv[]) {
 
-    analisar("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
+    if (argc > 1) {
 
-    analisar("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
+        char* codigo = ler_arquivo(argv[1]);
+
+        if (codigo == NULL) {
+            return 1;
+        }
+
+        ResultadoAnalise resultado = analisar_codigo(codigo);
+        exibir_resultado_analise(resultado, argv[1]);
+
+        free(codigo);
+
+        return 0;
+
+    }
+
+    analisar_tempo("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
+
+    analisar_tempo("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
     
-    analisar("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
+    analisar_tempo("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
 
-    analisar("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
+    // analisar_tempo("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
 
-    analisar("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
+    // analisar_tempo("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
 
-    analisar("EncontrarMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
+    // analisar_tempo("EncontrarMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
 
-    analisar("EncontrarMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
+    // analisar_tempo("EncontrarMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
 
-    analisar("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
+    // analisar_tempo("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
 
-    analisar("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
+    // analisar_tempo("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
     
     return 0;
 
@@ -51,7 +70,7 @@ int main() {
     @param passo Número do passo utilizado na medição.
     @param repeticoes Quantidade de vezes que o algoritmo será executado.
 */
-void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes) {
+void analisar_tempo(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes) {
 
     printf("Analisando o algoritmo: %s\n", nomeAlgoritmo);
 
@@ -101,5 +120,31 @@ void analisar(const char* nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial
     limpar_timer(timer);
 
     printf("Analise de %s concluida. Resultados salvos em %s\n\n", nomeAlgoritmo, nomeArquivo);
+
+}
+
+
+char* ler_arquivo(const char* filename) {
+
+    FILE* arquivo = fopen(filename, "r");
+
+    if (arquivo == NULL) {
+        perror("Erro ao abrir o arquivo");
+        return NULL;
+    }
+
+    fseek(arquivo, 0, SEEK_END);
+    long tamanho = ftell(arquivo);
+    fseek(arquivo, 0, SEEK_SET);
+
+    char* conteudo = (char*) malloc(tamanho + 1);
+    if (conteudo) {
+        fread(conteudo, 1, tamanho, arquivo);
+        conteudo[tamanho] = '\0';
+    }
+
+    fclose(arquivo);
+
+    return conteudo;
 
 }

@@ -3,7 +3,7 @@ mkdir ./target
 
 gcc -o ./target/analisador ./src/*.c ./algoritmos/*.c
 
-./target/analisador
+./target/analisador $1
 
 echo "Pressione qualquer tecla para continuar..."
 read -n 1 -s -r -p ""
