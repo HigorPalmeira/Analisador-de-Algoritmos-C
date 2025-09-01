@@ -1,22 +1,15 @@
 
 #include <stdlib.h>
 
-#include "../includes/busca.h"
+#include "../../includes/busca.h"
 
-void busca_linear(int array[], int n) {
-
-    int valor = gerar_valor_aleatorio();
-
-    for (int i=0; i<n; i++) {
-
-        if (array[i] == valor) {
-            return;
-        }
-
-    }
+int gerar_valor_aleatorio() {
+    
+    return rand();
 
 }
 
+// @busca_binaria
 void busca_binaria(int array[], int n) {
 
     int valor = gerar_valor_aleatorio();
@@ -43,11 +36,5 @@ void busca_binaria(int array[], int n) {
         }
 
     }
-
-}
-
-int gerar_valor_aleatorio() {
-    
-    return rand();
 
 }
