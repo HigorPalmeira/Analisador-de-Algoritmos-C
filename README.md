@@ -1,35 +1,84 @@
-# Analisador de Algoritmos C
-
-O Analisador faz a contagem do tempo médio (ms) da execução dos algoritmos.
+# Analisador de Algoritmos
 
 ## Visão Geral
 
-O Analisador de Algoritmos foi elaborado na linguagem C e, faz a análise do tempo médio de execução de algoritmos e salva o resultado em um arquivo com extensão `.csv`, na pasta `resultados`. 
+O Analisador de Algoritmos (AnaBad) foi desenvolvido, na linguagem C, como projeto final para a disciplina de **Análise e Projeto de Algoritmos**.
 
-## Executar o Algoritmo
+O programa faz uma análise de tempo médio da execução de um algoritmo, que está incluído nos arquivos, e faz a medição da complexidade de tempo estimada de um arquivo com algoritmo, baseado na linguagem C.
 
-Pode executar utilizando o `Makefile`, na raiz do projeto execute o comando:
+## Como Compilar e Executar?
+
+O AnaBad possui dois métodos principais de compilação/execução, com o compilador `gcc` e com o arquivo `runner.sh`.
+
+* **GCC**:
+
+Utilizando o `gcc` para compilar manualmente o projeto:
+
 ```bash
-make
+gcc -o anabad ./src/*.c ./algoritmos/*/*.c
 ```
 
-Utilizando o arquivo `runner.sh`, que está na raiz do projeto, execute o comando:
-```bash
-./runner.sh
-```
-> Certifique-se de utilizar um terminal que execute arquivos `.sh`.
+> Certifique-se de que possui o compilador instalado em sua máquina.
 
-Utilizando o compilador `gcc`:
+* **Runner.sh**
+
+Utilizando o arquivo `runner.sh` para compilar, automáticamente, e executar o analisador:
+
 ```bash
-gcc -o analisador ./src/*.c ./algoritmos/*.c
-```
-Ele vai criar um arquivo executável com o nome `analisador.exe`, agora execute o executável criado:
-```bash
-./analisador
+./runner.sh <parâmetros>
 ```
 
-## Algoritmos de Teste
+> Certifique-se de que possui o bash no seu terminal. 
 
-Os algoritmos analisados, estão incluídos na pasta `./algoritmos`, e cada algoritmo incluído  possui um arquivo `header` na pasta `./includes`. É necessário incluir os headers no arquivo principal, e chamar a função `analisar`, passando seus parâmetros.
+**Obs.:** O arquivo `runner.sh` foi escrito por mim. Ele vai criar uma pasta temporária, onde o executável vai ficar, e executar o programa com os parâmetros passados.
 
-**Obs.:** Os algoritmos devem estar no formato `void algoritmo(int* vetor, int tamanho)`.
+## Parâmetros
+
+Ao executar o programa, ele solicita alguns parâmetros por padrão. Se o programa for executado sem nenhum parâmetro passado, ele vai mostrar a mensagem padrão de ajuda.
+
+| Parâmetro | Descrição |
+| :---: | :--- |
+| -a | análise de arquivo, complexidade de tempo estimada |
+| -c | análise do tempo médio de execução de algoritmo |
+| -h | exibe o guia de ajuda |
+
+### Parâmetro -a
+
+O programa espera que seja passado um arquivo após o parâmetro `-a`, o qual será **lido** e **analisado**.
+
+*Exemplo de uso*
+```bash
+./anabad -a ./algoritmos/ordenacao/bubble_sort.c
+ou
+./runner.sh -a ./algoritmos/ordenacao/bubble_sort.c
+```
+
+### Parâmetro -c
+
+O programa será executado, exibindo um menu com os algoritmos internos para testes. O primeiro menu mostrará o tipo de algoritmo, e o(s) outro(s) menu(s) exibirá(ão) os algoritmos em si para serem testados. Os resultados serão salvos na pasta `./resultados/tempo/` com o nome do algoritmo e a extensão `.csv`.
+
+*Exemplo de uso*
+```bash
+./anabad -c
+ou
+./runner.sh -c
+```
+
+*Modelo de Saída do Arquivo de Resultados*
+```csv
+N,TempoMedio_ms
+1000,6.922430
+2000,25.863210
+3000,49.125450
+4000,76.962030
+5000,108.835830
+6000,163.978360
+7000,207.301690
+8000,275.619590
+9000,357.359560
+10000,436.268730
+```
+
+## Parâmetro -h
+
+O programa irá exibir o seu menu de ajuda para o programa.

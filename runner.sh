@@ -1,15 +1,20 @@
 
+TARGET="./target"
+SRC="./src"
+ALGORITMOS="./algoritmos"
+EXECUTAVEL="anabad"
+
 clear
 
-if [ -d "./target" ]; then
-    rm -rf ./target
+if [ -d "$TARGET" ]; then
+    rm -rf $TARGET/
 fi
 
-mkdir ./target
+mkdir $TARGET
 
-gcc -o ./target/analisador ./src/*.c ./algoritmos/*/*.c
+gcc -o $TARGET/$EXECUTAVEL $SRC/*.c $ALGORITMOS/*/*.c
 
-./target/analisador $@
+$TARGET/$EXECUTAVEL $@
 
 echo "Pressione qualquer tecla para continuar..."
 read -n 1 -s -r -p ""

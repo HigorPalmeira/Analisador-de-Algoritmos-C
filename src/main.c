@@ -37,49 +37,27 @@ int main(int argc, char *argv[]) {
     }
 
     char *opcao = argv[1];
+
+    if (strstr(opcao, "-a") != NULL) {
+        
+        char *codigo = ler_arquivo(argv[2]);
     
-    if (argc > 2)
-    {
-
-        if (strstr(opcao, "-a") != NULL)
-        {
-
-            char *codigo = ler_arquivo(argv[2]);
-
-            if (codigo == NULL)
-            {
-                return 1;
-            }
-
-            ResultadoAnalise resultado = analisar_codigo(codigo);
-            exibir_resultado_analise(resultado, argv[2]);
-
-            free(codigo);
-        } else {
-            
-            ajuda(argv[0]);
-
+        if (codigo == NULL) {
+            return 1;
         }
-
-
-        return 0;
-    }
-
-    else if ( argc > 1)
-    {
-
-        if (strstr(opcao, "-c") != NULL) {
-            
     
-            menu();
+        ResultadoAnalise resultado = analisar_codigo(codigo);
+        exibir_resultado_analise(resultado, argv[2]);
     
-            
-    
-        } else {
-            
-            ajuda(argv[0]);
+        free(codigo);
 
-        }
+    } else if (strstr(opcao, "-c") != NULL) {
+
+        menu();
+
+    } else if (strstr(opcao, "-h") != NULL) {
+        
+        ajuda(argv[0]);
 
     }
 
