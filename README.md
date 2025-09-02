@@ -82,3 +82,17 @@ N,TempoMedio_ms
 ## Parâmetro -h
 
 O programa irá exibir o seu menu de ajuda para o programa.
+
+## Como incluir algoritmos?
+
+Para incluir novos algoritmos para medir o tempo de execução, são necessários alguns passos simples.
+
+1. Crie uma pasta, se necessário, em `./algoritmos` para o tipo de algoritmo a ser incluído.
+
+2. Crie um arquivo (.c) com o nome do algoritmo, não utilize espaços.
+
+3. Crie um arquivo header, na pasta `./includes`, com o nome do tipo de algoritmo (se ele existir, apenas adicione o novo algoritmo).
+
+4. Inclua o algoritmo no arquivo `main.c`, na pasta `./src`. *Obs.:* Se preferir (recomendado) crie uma seção para o algoritmo na função do `menu()`.
+
+* **OBS.:** Preste atenção no algoritmo a ser inserido. O programa faz as medições de tempo em funções com retorno `void` e dois parâmetros `int[], int` (vetor de valores e tamanho do vetor, respectivamente). Se necessário, crie funções utilitárias no arquivo do próprio algoritmo, para adequá-lo a formatação.
