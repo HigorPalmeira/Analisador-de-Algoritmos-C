@@ -4,7 +4,7 @@
 
 O Analisador de Algoritmos (AnaBad) foi desenvolvido, na linguagem C, como projeto final para a disciplina de **Análise e Projeto de Algoritmos**.
 
-O programa faz uma análise de tempo médio da execução de um algoritmo, que está incluído nos arquivos, e faz a medição da complexidade de tempo estimada de um arquivo com algoritmo, baseado na linguagem C.
+O programa faz uma análise de tempo médio da execução de um algoritmo, que está incluído nos arquivos, e faz a medição da complexidade de tempo estimada (com foco em *loops*) de um arquivo com algoritmo, baseado na linguagem C.
 
 ## Como Compilar e Executar?
 
@@ -96,3 +96,9 @@ Para incluir novos algoritmos para medir o tempo de execução, são necessário
 4. Inclua o algoritmo no arquivo `main.c`, na pasta `./src`. *Obs.:* Se preferir (recomendado) crie uma seção para o algoritmo na função do `menu()`.
 
 * **OBS.:** Preste atenção no algoritmo a ser inserido. O programa faz as medições de tempo em funções com retorno `void` e dois parâmetros `int[], int` (vetor de valores e tamanho do vetor, respectivamente). Se necessário, crie funções utilitárias no arquivo do próprio algoritmo, para adequá-lo a formatação.
+
+## Modelo de Algoritmo para Análise de Arquivos
+
+O analisador vai percorrer os loops sempre buscando a variável de controle padrão, o `n`.
+
+Os arquivos que serão analisados devem seguir um certo modelo de sintaxe. Os operadores relacionais (<, <=) devem ter um espaço em branco antes da variável de controle `n`.

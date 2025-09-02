@@ -15,7 +15,8 @@ int* gerar_array_aleatorio(int n) {
 
     if (!array) return NULL;
 
-    for (int i=0; i<n; i++) {
+    int i;
+    for (i = 0; i < n; i++) {
         array[i] = rand();
     }
 

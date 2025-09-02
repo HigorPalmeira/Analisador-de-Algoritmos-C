@@ -4,7 +4,8 @@
 // @insertion_sort
 void insertion_sort(int array[], int n) {
 
-    for (int i=1; i<n; i++) {
+    int i;
+    for (i = 1; i < n; i++) {
         int k = array[i];
         int j = i - 1;
 

@@ -8,7 +8,8 @@ void encontrar_minimo(int array[], int n) {
 
     int minimo = array[0];
 
-    for (int i=1; i<n; i++) {
+    int i;
+    for (i = 1; i < n; i++) {
 
         if (array[i] < minimo) {
 

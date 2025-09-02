@@ -8,7 +8,8 @@ void encontrar_maximo(int array[], int n) {
 
     int maximo = array[0];
 
-    for (int i=1; i<n; i++) {
+    int i;
+    for (i = 1; i < n; i++) {
 
         if (array[i] > maximo) {
             
