@@ -39,18 +39,30 @@ Ao executar o programa, ele solicita alguns parâmetros por padrão. Se o progra
 | Parâmetro | Descrição |
 | :---: | :--- |
 | -a | análise de arquivo, complexidade de tempo estimada |
+| -as | análise de arquivo, complexidade de tempo estimada, resultados salvos em arquivo |
 | -c | análise do tempo médio de execução de algoritmo |
 | -h | exibe o guia de ajuda |
 
 ### Parâmetro -a
 
-O programa espera que seja passado um arquivo após o parâmetro `-a`, o qual será **lido** e **analisado**.
+O programa espera que seja passado um arquivo após o parâmetro `-a`, o qual será **lido** e **analisado**. Os resultados serão exibidos no console.
 
 *Exemplo de uso*
 ```bash
 ./anabad -a ./algoritmos/ordenacao/bubble_sort.c
 ou
 ./runner.sh -a ./algoritmos/ordenacao/bubble_sort.c
+```
+
+### Parâmetro -as
+
+Este parâmetro é semelhante ao anterior (`-a`), o diferencial dele é que, os dados resultantes da análise serão salvos em um arquivo de texto (`.txt`) na pasta `./resultados/complexidade/` com o nome do algoritmo e a extensão original, ao invés de exibir os resultados no console.
+
+*Exemplo de uso*
+```bash
+./anabad -as ./algoritmos/ordenacao/bubble_sort.c
+ou
+./runner.sh -as ./algoritmos/ordenacao/bubble_sort.c
 ```
 
 ### Parâmetro -c

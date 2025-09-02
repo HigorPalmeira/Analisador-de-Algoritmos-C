@@ -23,6 +23,10 @@ typedef void (*FuncaoAlgoritmo)(int *, int);
 void analisar_tempo(const char *nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
 char *ler_arquivo(const char *filename);
 
+char* nome_arquivo(const char* caminho);
+
+int analisar_complexidade(const char *caminhoArquivo, int isSalvar);
+
 void menu();
 
 int main(int argc, char *argv[]) {
@@ -38,18 +42,24 @@ int main(int argc, char *argv[]) {
 
     char *opcao = argv[1];
 
-    if (strstr(opcao, "-a") != NULL) {
+    if (strstr(opcao, "-as") != NULL) {
+
+        analisar_complexidade(argv[2], 1);
+
+    } else if (strstr(opcao, "-a") != NULL) {
+
+        analisar_complexidade(argv[2], 0);
         
-        char *codigo = ler_arquivo(argv[2]);
+        // char *codigo = ler_arquivo(argv[2]);
     
-        if (codigo == NULL) {
-            return 1;
-        }
+        // if (codigo == NULL) {
+        //     return 1;
+        // }
     
-        ResultadoAnalise resultado = analisar_codigo(codigo);
-        exibir_resultado_analise(resultado, argv[2]);
+        // ResultadoAnalise resultado = analisar_codigo(codigo);
+        // exibir_resultado_analise(resultado, argv[2]);
     
-        free(codigo);
+        // free(codigo);
 
     } else if (strstr(opcao, "-c") != NULL) {
 
@@ -127,6 +137,64 @@ void analisar_tempo(const char *nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nI
     limpar_timer(timer);
 
     printf("Analise de %s concluida. Resultados salvos em %s\n\n", nomeAlgoritmo, nomeArquivo);
+}
+
+int analisar_complexidade(const char *caminhoArquivo, int isSalvar) {
+
+    char* codigo = ler_arquivo(caminhoArquivo);
+
+    if (codigo == NULL) {
+        return 1;
+    }
+
+    ResultadoAnalise resultado = analisar_codigo(codigo);
+
+    if (isSalvar){
+        
+        char* nomeAlgoritmo = nome_arquivo(caminhoArquivo);
+
+        if (nomeAlgoritmo != NULL) {
+        
+            char nomeArquivo[256];
+            
+            sprintf(nomeArquivo, "resultados/complexidade/%s.txt", nomeAlgoritmo);
+        
+            FILE* arquivo = fopen(nomeArquivo, "w");
+
+            if (arquivo == NULL) {
+                free(codigo);
+                perror("Erro ao abrir o arquivo de resultados.");
+                exit(EXIT_FAILURE);
+            }
+
+            fprintf(arquivo, "Contagem de Instruções Básicas: %d\n", resultado.instrucoesBasicas);
+            fprintf(arquivo, "Complexidade de Tempo Estimada: %s\n", complexidade_to_string(resultado.complexidade));
+
+            fclose(arquivo);
+        }
+
+    } else {
+
+        exibir_resultado_analise(resultado, caminhoArquivo);
+
+    }
+
+    free(codigo);
+
+    return 0;
+
+}
+
+char* nome_arquivo(const char* caminho) {
+
+    char* temp = strrchr(caminho, '/');
+
+    if (temp != NULL) {
+        return temp + 1;
+    }
+
+    return NULL;
+
 }
 
 char *ler_arquivo(const char *filename)

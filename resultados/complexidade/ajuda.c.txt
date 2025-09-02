@@ -1,0 +1,2 @@
+Contagem de Instruções Básicas: 3
+Complexidade de Tempo Estimada: O(1)

@@ -14,8 +14,9 @@ void ajuda(const char* filename) {
 void guia_opcoes() {
 
     char* opcoes[] = {
-        "-a : análise de arquivo, complexidade de tempo estimada",
-        "-c : análise do tempo médio de execução de algoritmo",
+        "-a : análise de arquivo, complexidade de tempo estimada, resultados exibidos no console",
+        "-as : análise de arquivo, complexidade de tempo estimada, resultados salvos em arquivo",
+        "-c : análise do tempo médio de execução de algoritmo, resultados exibidos no console e salvos em arquivo",
         "-h : exibe o guia de ajuda"
     };
 
