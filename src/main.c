@@ -23,12 +23,11 @@ typedef void (*FuncaoAlgoritmo)(int *, int);
 void analisar_tempo(const char *nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
 char *ler_arquivo(const char *filename);
 
-int main(int argc, char *argv[])
-{
+void menu();
+
+int main(int argc, char *argv[]) {
 
     setConsole();
-    
-    printf("Locale: pão e çãçé\n\n");
 
     if (argc == 1) {
 
@@ -70,23 +69,12 @@ int main(int argc, char *argv[])
     {
 
         if (strstr(opcao, "-c") != NULL) {
-            analisar_tempo("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
+            
     
-            analisar_tempo("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
+            menu();
     
-            analisar_tempo("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
+            
     
-            // analisar_tempo("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
-    
-            // analisar_tempo("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
-    
-            // analisar_tempo("EncontrarMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
-    
-            // analisar_tempo("EncontrarMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
-    
-            // analisar_tempo("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
-    
-            // analisar_tempo("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
         } else {
             
             ajuda(argv[0]);
@@ -114,7 +102,7 @@ void analisar_tempo(const char *nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nI
     printf("Analisando o algoritmo: %s\n", nomeAlgoritmo);
 
     char nomeArquivo[256];
-    sprintf(nomeArquivo, "resultados/%s.csv", nomeAlgoritmo);
+    sprintf(nomeArquivo, "resultados/tempo/%s.csv", nomeAlgoritmo);
 
     FILE *arquivo = fopen(nomeArquivo, "w");
 
@@ -188,4 +176,190 @@ char *ler_arquivo(const char *filename)
     fclose(arquivo);
 
     return conteudo;
+}
+
+
+void menu() {
+
+    char opcao;
+
+    printf("\n===\tTIPOS DE ALGORITMOS DISPONÍVEIS\t===\n");
+
+    printf("[ 1 ] Busca\n");
+    printf("[ 2 ] Estatísticos\n");
+    printf("[ 3 ] Ordenação\n");
+
+    printf("> ");
+    scanf("%d", &opcao);
+
+    switch(opcao) {
+
+        case 1: {
+
+            char opcaoBusca;
+
+            printf("\n===\tALGORITMOS DE BUSCA\t===\n");
+
+            printf("[ 1 ] Busca Binária\n");
+            printf("[ 2 ] Busca Linear\n");
+            printf("[ 3 ] Todas\n");
+
+            printf("> ");
+            scanf("%d", &opcaoBusca);
+
+            switch(opcaoBusca) {
+                case 1: {
+
+                    analisar_tempo("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+                case 2: {
+
+                    analisar_tempo("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+                case 3: {
+
+                    analisar_tempo("BuscaBinaria", busca_binaria, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("BuscaLinear", busca_linear, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+                default: {
+                    printf("Opção inválida!\n");
+                    return;
+                }
+            }
+
+            break;
+        }
+
+        case 2: {
+
+            char opcaoEstatisticos;
+
+            printf("\n===\tALGORITMOS DE ESTATÍSTICOS\t===\n");
+
+            printf("[ 1 ] Calcular Máximo\n");
+            printf("[ 2 ] Calcular Média\n");
+            printf("[ 3 ] Calcular Mínimo");
+            printf("[ 4 ] Calcular Soma\n");
+            printf("[ 5 ] Todos\n");
+
+            printf("> ");
+            scanf("%d", &opcaoEstatisticos);
+
+            switch(opcaoEstatisticos) {
+                case 1: {
+
+                    analisar_tempo("CalcularMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 2: {
+
+                    analisar_tempo("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 3: {
+
+                    analisar_tempo("CalcularMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 4: {
+
+                    analisar_tempo("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 5: {
+
+                    analisar_tempo("CalcularMaximo", encontrar_maximo, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("CalcularMinimo", encontrar_minimo, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("CalcularSoma", calcular_soma, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                default: {
+                    printf("Opção inválida!\n");
+                    return;
+                }
+            }
+
+            break;
+        }
+
+        case 3: {
+
+            char opcaoOrdenacao;
+
+            printf("\n===\tALGORITMOS DE ORDENAÇÃO\t===\n");
+
+            printf("[ 1 ] Bubble Sort\n");
+            printf("[ 2 ] Insertion Sort\n");
+            printf("[ 3 ] Selection Sort\n");
+            printf("[ 4 ] Todos\n");
+
+            printf("> ");
+            scanf("%d", &opcaoOrdenacao);
+
+            switch(opcaoOrdenacao) {
+
+                case 1: {
+
+                    analisar_tempo("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 2: {
+
+                    analisar_tempo("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 3: {
+
+                    analisar_tempo("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                case 4: {
+
+                    analisar_tempo("BubbleSort", bubble_sort, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("InsertionSort", insertion_sort, 1000, 10000, 1000, 10);
+
+                    analisar_tempo("SelectionSort", selection_sort, 1000, 10000, 1000, 10);
+
+                    break;
+                }
+
+                default: {
+                    printf("Opção inválida!\n");
+                    return;
+                }
+            }
+
+            break;
+        }
+
+    }
+
 }
