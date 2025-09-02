@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 #include "../includes/analisador.h"
 #include "../includes/timer.h"
 #include "../includes/ordenacao.h"
 #include "../includes/busca.h"
 #include "../includes/estatistico.h"
+
+#include "../includes/ajuda.h"
+#include "../includes/configuracao.h"
 
 /*
     Tipagem de uma função com dois parâmetros e retorno do tipo void.
@@ -19,14 +23,16 @@ typedef void (*FuncaoAlgoritmo)(int *, int);
 void analisar_tempo(const char *nomeAlgoritmo, FuncaoAlgoritmo algoritmo, int nInicial, int nFinal, int passo, int repeticoes);
 char *ler_arquivo(const char *filename);
 
-void help(const char* filename);
-
 int main(int argc, char *argv[])
 {
 
+    setConsole();
+    
+    printf("Locale: pão e çãçé\n\n");
+
     if (argc == 1) {
 
-        help(argv[0]);
+        ajuda(argv[0]);
 
         return 0;
     }
@@ -51,7 +57,9 @@ int main(int argc, char *argv[])
 
             free(codigo);
         } else {
-            help(argv[0]);
+            
+            ajuda(argv[0]);
+
         }
 
 
@@ -80,20 +88,14 @@ int main(int argc, char *argv[])
     
             // analisar_tempo("CalcularMedia", calcular_media, 1000, 10000, 1000, 10);
         } else {
-            help(argv[0]);
+            
+            ajuda(argv[0]);
+
         }
 
     }
 
     return 0;
-}
-
-void help(const char* filename) {
-    
-    printf("Uso: %s <opcao> [<arquivo>]\n", filename);
-    printf("Opcao: \n");
-    printf("\n\t-a para analise de codigo\n\t-c para analise de desempenho\n\n");
-
 }
 
 /*
