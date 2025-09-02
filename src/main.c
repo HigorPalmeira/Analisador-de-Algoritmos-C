@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <locale.h>
 
 #include "../includes/analisador.h"
 #include "../includes/timer.h"
@@ -49,17 +48,6 @@ int main(int argc, char *argv[]) {
     } else if (strstr(opcao, "-a") != NULL) {
 
         analisar_complexidade(argv[2], 0);
-        
-        // char *codigo = ler_arquivo(argv[2]);
-    
-        // if (codigo == NULL) {
-        //     return 1;
-        // }
-    
-        // ResultadoAnalise resultado = analisar_codigo(codigo);
-        // exibir_resultado_analise(resultado, argv[2]);
-    
-        // free(codigo);
 
     } else if (strstr(opcao, "-c") != NULL) {
 
